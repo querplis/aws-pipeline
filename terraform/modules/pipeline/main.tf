@@ -196,17 +196,12 @@ resource "aws_iam_role_policy" "code_deploy_policy" {
 EOF
 }
 
-resource "aws_iam_policy_attachment" "codedeploya" {
+resource "aws_iam_policy_attachment" "codedeploy" {
   name       = "AWSCodeDeployRole"
   roles      = [aws_iam_role.codedeploy_deployment_role.name]
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSCodeDeployRole"
 }
 
-resource "aws_iam_policy_attachment" "codedeployb" {
-  name       = "AWSCodeDeployRole"
-  roles      = [aws_iam_role.codedeploy_deployment_role.name]
-  policy_arn = "arn:aws:iam::aws:policy/AutoScalingFullAccess"
-}
 
 resource "aws_codedeploy_app" "app" {
   compute_platform = "Server"
@@ -219,7 +214,6 @@ resource "aws_codedeploy_deployment_group" "codedeploy_group" {
   app_name              = aws_codedeploy_app.app.name
   deployment_group_name = "${var.appname}-codedeploy_group"
   service_role_arn      =  aws_iam_role.codedeploy_deployment_role.arn
-  //autoscaling_groups    = [aws_autoscaling_group.autoscaling_group.name]
   autoscaling_groups    = [var.autoscaling_group.name]
 
 
