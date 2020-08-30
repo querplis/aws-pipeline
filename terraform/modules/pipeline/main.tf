@@ -168,10 +168,40 @@ resource "aws_iam_role" "codedeploy_deployment_role" {
 EOF
 }
 
-resource "aws_iam_policy_attachment" "codedeploy" {
+
+#permissions for pipeline role
+resource "aws_iam_role_policy" "code_deploy_policy" {
+  name = "codedeploy_deployment"
+  role = aws_iam_role.codedeploy_deployment_role.id
+
+  policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:PassRole",
+                "ec2:RunInstances",
+                "ec2:CreateTags"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+EOF
+}
+
+resource "aws_iam_policy_attachment" "codedeploya" {
   name       = "AWSCodeDeployRole"
   roles      = [aws_iam_role.codedeploy_deployment_role.name]
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSCodeDeployRole"
+}
+
+resource "aws_iam_policy_attachment" "codedeployb" {
+  name       = "AWSCodeDeployRole"
+  roles      = [aws_iam_role.codedeploy_deployment_role.name]
+  policy_arn = "arn:aws:iam::aws:policy/AutoScalingFullAccess"
 }
 
 resource "aws_codedeploy_app" "app" {
