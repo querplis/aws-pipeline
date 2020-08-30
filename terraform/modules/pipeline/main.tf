@@ -254,8 +254,4 @@ resource "aws_codedeploy_deployment_group" "codedeploy_group" {
     deployment_type   = "BLUE_GREEN"
     deployment_option = "WITH_TRAFFIC_CONTROL"
   }
-  # attempt to fix issues with autoscaling groups name change 
-  # lifecycle {
-  #     ignore_changes = [autoscaling_groups]
-  # }
 }

@@ -16,6 +16,10 @@ module "lb" {
   source  = "./modules/lb"
   vpc     = "${module.network.vpc}"
   appname = var.appname
+  #make sure vpc and related stuff is already created
+  depends_on = [ 
+    module.network
+  ]
 
 }
 
@@ -27,12 +31,16 @@ module "autoscaling" {
   ssh_key_name        = var.ssh_key_name
   ssh_key_path        = var.ssh_key_path
   codepipeline_bucket = "${module.pipeline.codepipeline_bucket}"
+  #make sure vpc and related stuff is already created
+  depends_on = [
+    module.network
+  ]
 }
 
 module "pipeline" {
   source  = "./modules/pipeline"
   appname = var.appname
-  vpc     = "${module.network.vpc}"
+  //vpc     = "${module.network.vpc}"
 
   autoscaling_group = "${module.autoscaling.autoscaling_group}"
   lb_target_group   = module.lb.lb_target_group
@@ -43,3 +51,4 @@ module "pipeline" {
   github_branch      = var.github_branch
   github_oauth_token = var.github_oauth_token
 }
+

@@ -1,6 +1,4 @@
 variable "appname" {}
-variable "vpc" {}
-
 
 variable "lb_target_group" {}
 variable "github_owner" {}
