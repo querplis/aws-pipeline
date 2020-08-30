@@ -57,7 +57,7 @@ resource "aws_lb_target_group" "lb_target_group" {
   }
 }
 
-#load balanxer listener
+#load balancer listener
 
 resource "aws_lb_listener" "lb_listener" {
   load_balancer_arn = aws_lb.lb.arn

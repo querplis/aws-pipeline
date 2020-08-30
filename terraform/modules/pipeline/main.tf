@@ -184,7 +184,7 @@ resource "aws_codedeploy_app" "app" {
 resource "aws_codedeploy_deployment_group" "codedeploy_group" {
   app_name              = aws_codedeploy_app.app.name
   deployment_group_name = "${var.appname}-codedeploy_group"
-  service_role_arn      = "arn:aws:iam::835763914394:role/code_deploy_role_awst1"
+  service_role_arn      =  aws_iam_role.codedeploy_deployment_role.arn
   //autoscaling_groups    = [aws_autoscaling_group.autoscaling_group.name]
   autoscaling_groups    = [var.autoscaling_group.name]
 
