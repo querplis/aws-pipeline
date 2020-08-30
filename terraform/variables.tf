@@ -9,3 +9,7 @@ variable "github_owner" {}
 variable "github_repo" {}
 variable "github_branch" {}
 variable "github_oauth_token" {}
+
+variable "aws_access_key" {}
+variable "aws_secret_key" {}
+
