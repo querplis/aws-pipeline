@@ -142,6 +142,10 @@ resource "aws_codepipeline" "codepipeline" {
       }
     }
   }
+  #make sure code deploy group is created before pipeline
+  depends_on = [
+    aws_codedeploy_deployment_group.codedeploy_group
+  ]
 }
 
 
