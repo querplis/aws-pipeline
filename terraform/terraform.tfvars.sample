@@ -1,13 +1,16 @@
-aws_access_key = "key"
-aws_secret_key = "pass"
+aws_access_key = "key"                # your aws access key
+aws_secret_key = "pass"               # your aws secret key
 
-appname       = "app"
-region        = "eu-west-1"
-instance_type = "t2.nano"
-ssh_key_name  = "keyname"
-ssh_key_path  = "~/.ssh/id_rsa.pub"
+appname       = "app"                 # desired app name
+region        = "eu-west-1"           # aws region
+instance_type = "t2.nano"             # aws instance type
+ssh_key_name  = "keyname"             # ssh key name
+ssh_key_path  = "~/.ssh/id_rsa.pub"   # path to ssh pub key
 
-github_owner       = "username"
-github_repo        = "reponame"
-github_branch      = "master"
-github_oauth_token = "x"
+# github config:
+# owner repo and branch are for this repo, or if you clone it - cloned repo
+# 
+github_owner       = "querplis"       # github acc name for repo
+github_repo        = "aws-pipeline"   # github repo name
+github_branch      = "master"         # github branch name
+github_oauth_token = "x"              # oauth token with repo/public_repo scope: https://github.com/settings/tokens/new
