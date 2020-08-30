@@ -84,6 +84,10 @@ resource "aws_iam_role_policy" "launch_template_policy" {
 EOF
 }
 
+resource "aws_key_pair" "aws_key_pair" {
+  key_name = var.ssh_key_name
+  public_key = file("${var.ssh_key_path}")
+}
 resource "aws_launch_template" "launch_template" {
   name          = var.appname
   user_data     = filebase64("${path.root}/provision.sh")

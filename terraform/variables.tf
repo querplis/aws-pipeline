@@ -2,6 +2,7 @@ variable "appname" {}
 variable "region" {}
 variable "instance_type" {}
 variable "ssh_key_name" {}
+variable "ssh_key_path" {}
 variable "enable_autoscaling_group" {
   default = true
 }

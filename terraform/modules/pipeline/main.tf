@@ -1,7 +1,7 @@
 
 #bucket for pipeline artifact store
 resource "aws_s3_bucket" "codepipeline_bucket" {
-  bucket = "${var.appname}-codepipeline-bucket"
+  bucket_prefix = "${var.appname}-codepipeline-bucket"
   acl    = "private"
 }
 

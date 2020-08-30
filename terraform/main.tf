@@ -4,6 +4,7 @@ provider aws {
   secret_key = var.aws_secret_key
 }
 
+
 module "network" {
   source  = "./modules/network"
   region  = var.region
@@ -24,6 +25,7 @@ module "autoscaling" {
   vpc                 = "${module.network.vpc}"
   instance_type       = var.instance_type
   ssh_key_name        = var.ssh_key_name
+  ssh_key_path        = var.ssh_key_path
   codepipeline_bucket = "${module.pipeline.codepipeline_bucket}"
 }
 
