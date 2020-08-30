@@ -1,0 +1,16 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo $(date) > index.html
+      - echo "OK" > health.html
+      - pwd
+      - ls -al
+artifacts:
+  files:
+    - 'scripts/*'
+    - 'appspec.yml'
+    - '*.html'
+  discard-paths: no

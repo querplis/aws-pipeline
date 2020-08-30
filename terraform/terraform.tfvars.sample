@@ -1,0 +1,12 @@
+aws_access_key = "key"
+aws_secret_key = "pass"
+
+appname       = "app"
+region        = "eu-west-1"
+instance_type = "t2.nano"
+ssh_key_name  = "keyname"
+
+github_owner       = "username"
+github_repo        = "reponame"
+github_branch      = "master"
+github_oauth_token = ""

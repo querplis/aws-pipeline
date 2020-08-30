@@ -1,0 +1,16 @@
+version: 0.0
+os: linux
+files:
+  - source: '/index.html'
+    destination: /var/www/html/
+  - source: '/health.html'
+    destination: /var/www/html/
+hooks:
+  BeforeInstall:
+    - location: scripts/deps
+      timeout: 300
+      runas: root
+  ApplicationStop:
+    - location: scripts/stop
+      timeout: 30
+      runas: root
