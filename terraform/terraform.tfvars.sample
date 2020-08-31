@@ -3,7 +3,7 @@ aws_secret_key = "pass"               # your aws secret key
 
 appname       = "app"                 # desired app name
 region        = "eu-west-1"           # aws region
-instance_type = "t2.nano"             # aws instance type
+instance_type = "t3.nano"             # aws instance type
 ssh_key_name  = "keyname"             # ssh key name
 ssh_key_path  = "~/.ssh/id_rsa.pub"   # path to ssh pub key
 
